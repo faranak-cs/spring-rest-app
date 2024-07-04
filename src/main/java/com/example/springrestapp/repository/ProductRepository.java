@@ -8,4 +8,7 @@ import org.springframework.stereotype.Repository;
 public interface ProductRepository extends JpaRepository<ProductModel, Integer> {
 
     // REPOSITORY LAYER
+
+
+
 }

@@ -1,9 +1,15 @@
 package com.example.springrestapp.contoller.api;
 
+import com.example.springrestapp.dto.ProductDTO;
+import com.example.springrestapp.service.ProductService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ProductController {
+
+    // ONLY SERVICE LAYER TALK TO CONTROLLER LAYER
+    private ProductService productService;
 
     // REST ENDPOINTS
 
@@ -26,9 +32,9 @@ public class ProductController {
     }
 
     // GET PRODUCT BY ID
-    @GetMapping("/getProductById")
-    public String getProductById(){
-        return "Product 1";
+    @GetMapping("/getProductById/{id}")
+    public ResponseEntity<?> getProductById(@PathVariable Integer id){
+        return productService.getProductById(id);
     }
 
     // UPDATE PRODUCT BY ID
