@@ -25,7 +25,7 @@ public class ProductService {
     private final ProductMapper productMapper;
 
 
-    // GET PRODUCT BY ID FROM REPOSITORY LAYER
+    // GET PRODUCT BY ID FROM REPOSITORY LAYER ✅
     public ResponseEntity<?> getProductById(Integer id) {
 
         Optional<ProductModel> productModel = productRepository.findById(id);
@@ -40,8 +40,10 @@ public class ProductService {
         }
     }
 
-    // GET ALL PRODUCTS FROM REPOSITORY LAYER
+
+    // GET ALL PRODUCTS FROM REPOSITORY LAYER ✅
     public ResponseEntity<?> getAllProducts(){
+
         List<ProductModel> productModelList = productRepository.findAll();
 
         if(!productModelList.isEmpty()){
@@ -52,5 +54,17 @@ public class ProductService {
         else {
             return ResponseEntity.status(404).body(null);
         }
+    }
+
+    // CREATE NEW PRODUCT INTO REPOSITORY LAYER ❌
+    public ResponseEntity<?> createProduct(String productName){
+
+        final ProductModel productModel = new ProductModel();
+        productModel.setProductName(productName);
+
+        productRepository.save(productModel);
+
+        return ResponseEntity.status(200).body(productModel);
+
     }
 }

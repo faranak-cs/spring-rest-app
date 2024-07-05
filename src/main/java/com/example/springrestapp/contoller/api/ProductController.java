@@ -17,38 +17,39 @@ public class ProductController {
 
     // REST ENDPOINTS
 
-    // Hello
+    // Hello ✅
     @GetMapping("/hello")
     public String hello(){
         return "hello, hello";
     }
 
-    // ADD NEW PRODUCT
+    // ADD NEW PRODUCT ❌
     @PostMapping("/createProduct")
-    public String createProduct(){
-        return "Product is created!";
+    public ResponseEntity<?> createProduct(@RequestBody String productName){
+       // return "Product is created!";
+        return productService.createProduct(productName);
     }
 
-    // GET ALL THE PRODUCTS
+    // GET ALL THE PRODUCTS ✅
     @GetMapping("/getAllProducts")
     public ResponseEntity<?> getAllProducts(){
        // return "List of All Products!";
         return productService.getAllProducts();
     }
 
-    // GET PRODUCT BY ID
+    // GET PRODUCT BY ID ✅
     @GetMapping("/getProductById/{id}")
     public ResponseEntity<?> getProductById(@PathVariable Integer id){
         return productService.getProductById(id);
     }
 
-    // UPDATE PRODUCT BY ID
+    // UPDATE PRODUCT BY ID ❌
     @PutMapping("/updateProductById")
     public String updateProductById(){
         return "Product is updated!";
     }
 
-    // DELETE PRODUCT BY ID
+    // DELETE PRODUCT BY ID ❌
     @DeleteMapping("/deleteProductById")
     public String deleteProductById(){
         return "Product is deleted!";
