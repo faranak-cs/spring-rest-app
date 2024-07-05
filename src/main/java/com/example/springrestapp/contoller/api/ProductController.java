@@ -2,14 +2,17 @@ package com.example.springrestapp.contoller.api;
 
 import com.example.springrestapp.dto.ProductDTO;
 import com.example.springrestapp.service.ProductService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequiredArgsConstructor
 public class ProductController {
 
     // ONLY SERVICE LAYER TALK TO CONTROLLER LAYER
-    private ProductService productService;
+
+    private final ProductService productService;
 
     // REST ENDPOINTS
 
