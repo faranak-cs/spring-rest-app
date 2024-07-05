@@ -1,6 +1,7 @@
 package com.example.springrestapp.contoller.api;
 
 import com.example.springrestapp.dto.ProductDTO;
+import com.example.springrestapp.model.ProductModel;
 import com.example.springrestapp.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

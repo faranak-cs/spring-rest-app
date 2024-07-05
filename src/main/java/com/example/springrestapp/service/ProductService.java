@@ -30,10 +30,12 @@ public class ProductService {
         Optional<ProductModel> productModel = productRepository.findById(id);
 
         if(productModel.isPresent()){
-            return new ResponseEntity<>(productModel, HttpStatus.OK);
+           // return new ResponseEntity<>(productModel, HttpStatus.OK);
+            return ResponseEntity.status(200).body(productModel.get());
         }
         else {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+           // return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            return ResponseEntity.status(404).body(null);
         }
     }
 
