@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -39,5 +40,17 @@ public class ProductService {
         }
     }
 
+    // GET ALL PRODUCTS FROM REPOSITORY LAYER
+    public ResponseEntity<?> getAllProducts(){
+        List<ProductModel> productModelList = productRepository.findAll();
 
+        if(!productModelList.isEmpty()){
+            return ResponseEntity.status(200).body(productModelList);
+
+            //
+        }
+        else {
+            return ResponseEntity.status(404).body(null);
+        }
+    }
 }

@@ -31,8 +31,9 @@ public class ProductController {
 
     // GET ALL THE PRODUCTS
     @GetMapping("/getAllProducts")
-    public String getAllProducts(){
-        return "List of All Products!";
+    public ResponseEntity<?> getAllProducts(){
+       // return "List of All Products!";
+        return productService.getAllProducts();
     }
 
     // GET PRODUCT BY ID
