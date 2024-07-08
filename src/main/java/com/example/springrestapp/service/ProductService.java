@@ -56,7 +56,7 @@ public class ProductService {
         }
     }
 
-    // CREATE NEW PRODUCT INTO REPOSITORY LAYER ❌
+    // CREATE NEW PRODUCT INTO REPOSITORY LAYER ✅
     public ResponseEntity<?> createProduct(String productName){
 
         final ProductModel productModel = new ProductModel();
@@ -67,4 +67,22 @@ public class ProductService {
         return ResponseEntity.status(200).body(productModel);
 
     }
+
+    // UPDATE PRODUCT BY ID FROM REPOSITORY LAYER ❌
+    public ResponseEntity<?> updateProductById(Integer id, String productName){
+
+        final ProductModel productModel = new ProductModel();
+        productModel.setProductName(productName);
+        productModel.setProductId(id);
+
+        productRepository.save(productModel);
+
+        return ResponseEntity.status(200).body(productModel);
+    }
+
+
+
+
+
+    // DELETE PRODUCT BY ID FROM REPOSITORY LAYER ❌
 }

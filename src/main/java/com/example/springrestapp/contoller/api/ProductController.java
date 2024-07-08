@@ -44,9 +44,10 @@ public class ProductController {
     }
 
     // UPDATE PRODUCT BY ID ❌
-    @PutMapping("/updateProductById")
-    public String updateProductById(){
-        return "Product is updated!";
+    @PutMapping("/updateProductById/{id}")
+    public ResponseEntity<?> updateProductById(@PathVariable Integer id, @RequestBody String productName){
+       // return "Product is updated!";
+        return productService.updateProductById(id, productName);
     }
 
     // DELETE PRODUCT BY ID ❌
