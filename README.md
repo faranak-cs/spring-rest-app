@@ -27,3 +27,7 @@ REST API in Spring to perform CRUD operations on a H2 in-memory database of Prod
 - https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
 - https://www.baeldung.com/spring-boot-h2-database
 - https://spring.io/projects/spring-data-jpa
+## Version
+- java: 17.0.11-tem
+- maven: 3.9.8
+
