@@ -17,13 +17,16 @@ public class ProductController {
 
     // REST ENDPOINTS
 
-    // Hello ✅
+    // HEALTH CHECK
+    // http://localhost:8080/actuator/health
+
+    // HELLO ✅
     @GetMapping("/hello")
     public String hello(){
         return "hello, hello";
     }
 
-    // ADD NEW PRODUCT ❌
+    // ADD NEW PRODUCT ✅
     @PostMapping("/createProduct")
     public ResponseEntity<?> createProduct(@RequestBody String productName){
        // return "Product is created!";
