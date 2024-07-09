@@ -1,7 +1,7 @@
 # Spring REST App
 REST API in Spring to perform CRUD operations on a H2 in-memory database of Products.
 ## REST Endpoints
-- `/health`
+- `/actuator/health`
 - `/createProduct`
 - `/getAllProducts`
 - `/getProductById/{id}`
