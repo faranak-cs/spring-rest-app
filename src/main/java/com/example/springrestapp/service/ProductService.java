@@ -57,14 +57,13 @@ public class ProductService {
     }
 
     // CREATE NEW PRODUCT INTO REPOSITORY LAYER ✅
-    public ResponseEntity<?> createProduct(String productName){
+    public ProductDTO createProduct(ProductDTO productDTO){
 
-        final ProductModel productModel = new ProductModel();
-        productModel.setProductName(productName);
+        final ProductModel productModel = productMapper.toModel(productDTO);
 
         productRepository.save(productModel);
 
-        return ResponseEntity.status(200).body(productModel);
+        return productMapper.toDTO(productModel);
 
     }
 

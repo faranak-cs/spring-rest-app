@@ -28,9 +28,12 @@ public class ProductController {
 
     // ADD NEW PRODUCT ✅
     @PostMapping("/createProduct")
-    public ResponseEntity<?> createProduct(@RequestBody String productName){
+    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO){
        // return "Product is created!";
-        return productService.createProduct(productName);
+       // return productService.createProduct(productName);
+        return ResponseEntity
+                .status(200)
+                .body(productService.createProduct(productDTO));
     }
 
     // GET ALL THE PRODUCTS ✅

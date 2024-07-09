@@ -10,7 +10,7 @@ public class ProductMapper {
     // MAPS FROM DTO TO ENTITY, AND VICE VERSA
 
 
-    public static ProductModel toModel(ProductDTO productDTO){
+    public ProductModel toModel(ProductDTO productDTO){
 
         ProductModel productModel = new ProductModel();
         productModel.setProductId(productDTO.getProductId());
@@ -19,7 +19,7 @@ public class ProductMapper {
         return productModel;
     }
 
-    public static ProductDTO toDTO(ProductModel productModel){
+    public ProductDTO toDTO(ProductModel productModel){
 
         ProductDTO productDTO = new ProductDTO();
         productDTO.setProductId(productModel.getProductId());
