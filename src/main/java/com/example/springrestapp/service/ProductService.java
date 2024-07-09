@@ -68,7 +68,7 @@ public class ProductService {
 
     }
 
-    // UPDATE PRODUCT BY ID FROM REPOSITORY LAYER ❌
+    // UPDATE PRODUCT BY ID FROM REPOSITORY LAYER ✅
     public ResponseEntity<?> updateProductById(Integer id, String productName){
 
         final ProductModel productModel = new ProductModel();
@@ -80,9 +80,11 @@ public class ProductService {
         return ResponseEntity.status(200).body(productModel);
     }
 
-
-
-
-
     // DELETE PRODUCT BY ID FROM REPOSITORY LAYER ❌
+    public ResponseEntity<?> deleteProductById(Integer id){
+
+        productRepository.deleteById(id);
+
+        return ResponseEntity.status(204).build();
+    }
 }

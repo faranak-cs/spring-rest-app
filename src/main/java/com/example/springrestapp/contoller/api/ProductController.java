@@ -43,17 +43,18 @@ public class ProductController {
         return productService.getProductById(id);
     }
 
-    // UPDATE PRODUCT BY ID ❌
+    // UPDATE PRODUCT BY ID ✅
     @PutMapping("/updateProductById/{id}")
     public ResponseEntity<?> updateProductById(@PathVariable Integer id, @RequestBody String productName){
        // return "Product is updated!";
         return productService.updateProductById(id, productName);
     }
 
-    // DELETE PRODUCT BY ID ❌
-    @DeleteMapping("/deleteProductById")
-    public String deleteProductById(){
-        return "Product is deleted!";
+    // DELETE PRODUCT BY ID ✅
+    @DeleteMapping("/deleteProductById/{id}")
+    public ResponseEntity<?> deleteProductById(@PathVariable Integer id){
+        return productService.deleteProductById(id);
+       // return "Product is deleted!";
     }
 
 }
