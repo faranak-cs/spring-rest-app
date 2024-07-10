@@ -1,0 +1,32 @@
+@startuml
+
+package "Client" {
+  [Browser] as B
+}
+
+database "Database" {
+  [H2] as H
+}
+
+package "Repository Layer" {
+  [JpaRepository] as JR
+
+}
+
+package "Service Layer" {
+  [ProductMapper] as P
+}
+
+package "Controller" {
+  [REST Endpoints] as RA
+}
+
+B <-> RA : HTTP Request
+RA <-> P : DTO
+JR <-> P : Model
+H <-- JR : Spring Data JPA
+H <--> P : Model
+
+
+
+@enduml
