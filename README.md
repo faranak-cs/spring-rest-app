@@ -33,6 +33,9 @@ REST API in Spring to perform CRUD operations on a H2 in-memory database of Prod
 - https://spring.io/guides/gs/testing-web
 - https://www.oracle.com/ie/technical-resources/articles/java/javadoc-tool.html
 - https://www.baeldung.com/spring-boot-actuators
+## Architecture Diagram
+![Arch-Diagram](https://github.com/faranak-cs/spring-rest-app/assets/73027299/7c718584-29fb-4908-a924-0f7566a342c4)
+
 ## Demo Video
 
 
