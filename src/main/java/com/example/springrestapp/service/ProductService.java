@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,33 +27,39 @@ public class ProductService {
 
 
     // GET PRODUCT BY ID FROM REPOSITORY LAYER ✅
-    public ResponseEntity<?> getProductById(Integer id) {
+    public ProductDTO getProductById(Integer id) {
 
         Optional<ProductModel> productModel = productRepository.findById(id);
 
         if(productModel.isPresent()){
-           // return new ResponseEntity<>(productModel, HttpStatus.OK);
-            return ResponseEntity.status(200).body(productModel.get());
+            return productMapper.toDTO(productModel.get());
         }
         else {
-           // return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-            return ResponseEntity.status(404).body(null);
+            return null;
         }
     }
 
 
     // GET ALL PRODUCTS FROM REPOSITORY LAYER ✅
-    public ResponseEntity<?> getAllProducts(){
+    public List<ProductDTO> getAllProducts() {
 
         List<ProductModel> productModelList = productRepository.findAll();
 
-        if(!productModelList.isEmpty()){
-            return ResponseEntity.status(200).body(productModelList);
+        // MODEL PRODUCT LIST IS NOT EMPTY
+        if (!productModelList.isEmpty()) {
 
-            //
+            List<ProductDTO> productDTOList = new ArrayList<ProductDTO>();
+
+            // DTO PRODUCT LIST
+            for (ProductModel product : productModelList) {
+                productDTOList.add(productMapper.toDTO(product));
+            }
+
+            return productDTOList;
         }
+        // MODEL PRODUCT LIST IS EMPTY
         else {
-            return ResponseEntity.status(404).body(null);
+            return null;
         }
     }
 
@@ -68,22 +75,22 @@ public class ProductService {
     }
 
     // UPDATE PRODUCT BY ID FROM REPOSITORY LAYER ✅
-    public ResponseEntity<?> updateProductById(Integer id, String productName){
+    public ProductDTO updateProductById(Integer id, ProductDTO productDTO){
 
-        final ProductModel productModel = new ProductModel();
-        productModel.setProductName(productName);
-        productModel.setProductId(id);
+        productDTO.setProductId(id);
+
+        final ProductModel productModel = productMapper.toModel(productDTO);
 
         productRepository.save(productModel);
 
-        return ResponseEntity.status(200).body(productModel);
+        return productMapper.toDTO(productModel);
     }
 
-    // DELETE PRODUCT BY ID FROM REPOSITORY LAYER ❌
-    public ResponseEntity<?> deleteProductById(Integer id){
+    // DELETE PRODUCT BY ID FROM REPOSITORY LAYER ✅
+    public ProductDTO deleteProductById(Integer id){
 
         productRepository.deleteById(id);
 
-        return ResponseEntity.status(204).build();
+        return null;
     }
 }

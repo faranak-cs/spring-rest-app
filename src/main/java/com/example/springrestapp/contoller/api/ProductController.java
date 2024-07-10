@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class ProductController {
@@ -38,29 +40,40 @@ public class ProductController {
 
     // GET ALL THE PRODUCTS ✅
     @GetMapping("/getAllProducts")
-    public ResponseEntity<?> getAllProducts(){
+    public ResponseEntity<List<ProductDTO>> getAllProducts(){
        // return "List of All Products!";
-        return productService.getAllProducts();
+       // return productService.getAllProducts();
+        return ResponseEntity
+                .status(200)
+                .body(productService.getAllProducts());
     }
 
     // GET PRODUCT BY ID ✅
     @GetMapping("/getProductById/{id}")
-    public ResponseEntity<?> getProductById(@PathVariable Integer id){
-        return productService.getProductById(id);
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable Integer id){
+        return ResponseEntity
+                .status(200)
+                .body(productService.getProductById(id));
     }
 
     // UPDATE PRODUCT BY ID ✅
     @PutMapping("/updateProductById/{id}")
-    public ResponseEntity<?> updateProductById(@PathVariable Integer id, @RequestBody String productName){
+    public ResponseEntity<ProductDTO> updateProductById(@PathVariable Integer id, @RequestBody ProductDTO productDTO){
        // return "Product is updated!";
-        return productService.updateProductById(id, productName);
+       // return productService.updateProductById(id, productName);
+        return ResponseEntity
+                .status(200)
+                .body(productService.updateProductById(id, productDTO));
     }
 
     // DELETE PRODUCT BY ID ✅
     @DeleteMapping("/deleteProductById/{id}")
-    public ResponseEntity<?> deleteProductById(@PathVariable Integer id){
-        return productService.deleteProductById(id);
+    public ResponseEntity<ProductDTO> deleteProductById(@PathVariable Integer id){
        // return "Product is deleted!";
+       // return productService.deleteProductById(id);
+        return ResponseEntity
+                .status(204)
+                .body(productService.deleteProductById(id));
     }
 
 }
