@@ -7,6 +7,7 @@ REST API in Spring to perform CRUD operations on a H2 in-memory database of Prod
 - `/getProductById/{id}`
 - `/updateProductById/{id}`
 - `/deleteProduct/{id}`
+- `/swagger-ui/index.html`
 ## Requirements
 ### Controller
 - Implement the REST endpoints described in the section below
