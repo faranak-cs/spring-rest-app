@@ -38,7 +38,9 @@ public class DemoTest {
 
     @Test
     public void abortedTest(){
-        assumeTrue("abc".contains("Z"));
+        assumeTrue("abc".contains("A"));
+
+        // IF ASSUMPTION IS TRUE, THEN BELOW CODE WORKS
         fail("test should have been aborted");
     }
 
