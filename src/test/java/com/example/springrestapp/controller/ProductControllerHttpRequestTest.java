@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ProductControllerHttpRequestTest {
 
@@ -17,6 +19,9 @@ public class ProductControllerHttpRequestTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-//    @Test
-//    void
+    @Test
+    void helloShouldReturnDefaultMessage(){
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/hello",
+                String.class)).contains("faran");
+    }
 }
