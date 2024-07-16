@@ -44,6 +44,7 @@ https://github.com/faranak-cs/spring-rest-app/assets/73027299/0f4f37fe-4550-4ec4
 
 
 ## Version
-- java: 17.0.11-tem
-- maven: 3.9.8
+- IntelliJ IDEA CE: 2024.1.4 
+- Java: 17.0.11-tem
+- Maven: 3.9.8
 
