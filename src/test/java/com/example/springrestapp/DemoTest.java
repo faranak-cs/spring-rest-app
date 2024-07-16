@@ -24,11 +24,11 @@ public class DemoTest {
         // ACTUAL TEST
     }
 
-    @Test
-    public void failingTest(){
-        // FAIL TEST
-        fail("A failing test");
-    }
+//    @Test
+//    public void failingTest(){
+//        // FAIL TEST
+//        fail("A failing test");
+//    }
 
     @Test
     @Disabled("for demo")
