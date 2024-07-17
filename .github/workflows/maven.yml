@@ -16,16 +16,34 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        java_version: [17]
+        os: [ubuntu-latest]
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up JDK 17
+
+    - name: Set up JDK ${{ matrix.python-version }}
       uses: actions/setup-java@v3
       with:
-        java-version: '17'
+        java-version: ${{ matrix.python-version }}
         distribution: 'temurin'
         cache: maven
+
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+
+    - name: Code coverage with JaCoCo
+      id: jacoco_reporter
+      uses: PavanMudigonda/jacoco-reporter@v5.0
+      with:
+        coverage_results_path: 'target/site/jacoco/jacoco.xml'
+        coverage_report_name: JaCoCo
+        coverage_report_title: Code Coverage
+        skip_check_run: false
+        minimum_coverage: 80
+        fail_below_threshold: true
+        publish_only_summary: true
