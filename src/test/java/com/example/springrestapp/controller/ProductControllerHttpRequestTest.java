@@ -35,4 +35,13 @@ public class ProductControllerHttpRequestTest {
                 String.class).getStatusCode(), HttpStatus.OK);
     }
 
+    @Test
+    void createProductShouldReturnStatus200(){
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setProductName("Table");
+
+        assertEquals(this.restTemplate.postForEntity("http://localhost:" + port + "/createProduct",
+                productDTO, String.class).getStatusCode(), HttpStatus.OK);
+    }
+
 }
