@@ -1,14 +1,18 @@
 package com.example.springrestapp.controller;
 
 
+import com.example.springrestapp.dto.ProductDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ProductControllerHttpRequestTest {
@@ -22,6 +26,13 @@ public class ProductControllerHttpRequestTest {
     @Test
     void helloShouldReturnDefaultMessage(){
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/hello",
-                String.class)).contains("faran");
+                String.class)).contains("hello, hello");
     }
+
+    @Test
+    void getProductByIdShouldReturnStatus200(){
+        assertEquals(this.restTemplate.getForEntity("http://localhost:" + port + "/getProductById/1",
+                String.class).getStatusCode(), HttpStatus.OK);
+    }
+
 }
