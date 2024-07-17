@@ -8,8 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,12 +31,6 @@ public class ProductControllerHttpRequestTest {
     }
 
     @Test
-    void getProductByIdShouldReturnStatus200(){
-        assertEquals(this.restTemplate.getForEntity("http://localhost:" + port + "/getProductById/1",
-                String.class).getStatusCode(), HttpStatus.OK);
-    }
-
-    @Test
     void createProductShouldReturnStatus200(){
         ProductDTO productDTO = new ProductDTO();
         productDTO.setProductName("Table");
@@ -44,4 +39,37 @@ public class ProductControllerHttpRequestTest {
                 productDTO, String.class).getStatusCode(), HttpStatus.OK);
     }
 
+    @Test
+    void getProductByIdShouldReturnStatus200(){
+        assertEquals(this.restTemplate.getForEntity("http://localhost:" + port + "/getProductById/1",
+                String.class).getStatusCode(), HttpStatus.OK);
+    }
+
+    @Test
+    void getAllProductsShouldReturnStatus200(){
+        assertEquals(this.restTemplate.getForEntity("http://localhost:" + port + "/getAllProducts",
+                String.class).getStatusCode(), HttpStatus.OK);
+    }
+
+    @Test
+    void updateProductByIdShouldReturnStatus200(){
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setProductName("Table");
+
+        assertEquals(this.restTemplate.exchange("http://localhost:" + port + "/updateProductById/1",
+                HttpMethod.PUT,
+                new HttpEntity<>(productDTO),
+                ProductDTO.class).getStatusCode(), HttpStatus.OK);
+    }
+
+    @Test
+    void deleteProductByIdShouldReturnStatus200(){
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setProductId(1);
+
+        assertEquals(this.restTemplate.exchange("http://localhost:" + port + "/deleteProductById/1",
+                HttpMethod.DELETE,
+                new HttpEntity<>(productDTO),
+                ProductDTO.class).getStatusCode(), HttpStatus.NO_CONTENT);
+    }
 }
