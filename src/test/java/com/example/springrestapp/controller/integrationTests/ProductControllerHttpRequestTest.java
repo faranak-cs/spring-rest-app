@@ -1,4 +1,4 @@
-package com.example.springrestapp.controller;
+package com.example.springrestapp.controller.integrationTests;
 
 
 import com.example.springrestapp.dto.ProductDTO;
