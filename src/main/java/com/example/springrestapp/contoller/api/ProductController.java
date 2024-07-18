@@ -39,12 +39,21 @@ public class ProductController {
 
     // GET ALL THE PRODUCTS ✅
     @GetMapping("/getAllProducts")
-    public ResponseEntity<List<ProductDTO>> getAllProducts(){
+    public ResponseEntity<List<ProductDTO>> getAllProducts() {
        // return "List of All Products!";
        // return productService.getAllProducts();
-        return ResponseEntity
-                .status(200)
-                .body(productService.getAllProducts());
+        List<ProductDTO> products = productService.getAllProducts();
+
+        if (products.isEmpty()) {
+             return ResponseEntity
+                     .status(404)
+                     .build();
+        }
+        else {
+            return ResponseEntity
+                    .status(200)
+                    .body(products);
+        }
     }
 
     // GET PRODUCT BY ID ✅

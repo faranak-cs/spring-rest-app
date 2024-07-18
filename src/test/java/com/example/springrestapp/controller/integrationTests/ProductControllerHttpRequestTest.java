@@ -48,7 +48,7 @@ public class ProductControllerHttpRequestTest {
     @Test
     void getAllProductsShouldReturnStatus200(){
         assertEquals(this.restTemplate.getForEntity("http://localhost:" + port + "/getAllProducts",
-                String.class).getStatusCode(), HttpStatus.OK);
+                String.class).getStatusCode(), HttpStatus.NOT_FOUND);
     }
 
     @Test
