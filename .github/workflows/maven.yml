@@ -46,4 +46,3 @@ jobs:
         skip_check_run: true
         minimum_coverage: 80
         fail_below_threshold: true
-        publish_only_summary: true
