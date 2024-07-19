@@ -32,9 +32,18 @@ public class ProductController {
     public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO){
        // return "Product is created!";
        // return productService.createProduct(productName);
-        return ResponseEntity
-                .status(200)
-                .body(productService.createProduct(productDTO));
+
+        if (productDTO.getProductName() == null){
+            return ResponseEntity
+                    .status(400)
+                    .build();
+        }
+        else {
+            ProductDTO newProduct = productService.createProduct(productDTO);
+            return ResponseEntity
+                    .status(200)
+                    .body(newProduct);
+        }
     }
 
     // GET ALL THE PRODUCTS ✅
@@ -42,9 +51,15 @@ public class ProductController {
     public ResponseEntity<List<ProductDTO>> getAllProducts() {
        // return "List of All Products!";
        // return productService.getAllProducts();
+
         List<ProductDTO> products = productService.getAllProducts();
 
-        if (products.isEmpty()) {
+        if (products == null) {
+            return ResponseEntity
+                    .status(404)
+                    .build();
+        }
+        else if (products.isEmpty()) {
              return ResponseEntity
                      .status(404)
                      .build();
@@ -59,9 +74,19 @@ public class ProductController {
     // GET PRODUCT BY ID ✅
     @GetMapping("/getProductById/{id}")
     public ResponseEntity<ProductDTO> getProductById(@PathVariable Integer id){
-        return ResponseEntity
-                .status(200)
-                .body(productService.getProductById(id));
+
+        ProductDTO product = productService.getProductById(id);
+
+        if (product != null) {
+            return ResponseEntity
+                    .status(200)
+                    .body(product);
+        }
+        else {
+            return ResponseEntity
+                    .status(404)
+                    .build();
+        }
     }
 
     // UPDATE PRODUCT BY ID ✅
@@ -69,9 +94,20 @@ public class ProductController {
     public ResponseEntity<ProductDTO> updateProductById(@PathVariable Integer id, @RequestBody ProductDTO productDTO){
        // return "Product is updated!";
        // return productService.updateProductById(id, productName);
-        return ResponseEntity
-                .status(200)
-                .body(productService.updateProductById(id, productDTO));
+
+        productDTO.setProductId(id);
+
+        if (productDTO.getProductName() == null){
+            return ResponseEntity
+                    .status(400)
+                    .build();
+        }
+        else {
+            ProductDTO updatedProduct = productService.createProduct(productDTO);
+            return ResponseEntity
+                    .status(200)
+                    .body(updatedProduct);
+        }
     }
 
     // DELETE PRODUCT BY ID ✅

@@ -36,7 +36,7 @@ public class ProductControllerHttpRequestTest {
         productDTO.setProductName("Table");
 
         assertEquals(this.restTemplate.postForEntity("http://localhost:" + port + "/createProduct",
-                productDTO, String.class).getStatusCode(), HttpStatus.OK);
+               productDTO, String.class).getStatusCode(), HttpStatus.OK);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class ProductControllerHttpRequestTest {
     @Test
     void updateProductByIdShouldReturnStatus200(){
         ProductDTO productDTO = new ProductDTO();
-        productDTO.setProductName("Table");
+        productDTO.setProductName(null);
 
         assertEquals(this.restTemplate.exchange("http://localhost:" + port + "/updateProductById/1",
                 HttpMethod.PUT,

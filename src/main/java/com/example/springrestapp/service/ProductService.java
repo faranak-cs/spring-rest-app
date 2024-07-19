@@ -43,7 +43,10 @@ public class ProductService {
 
         List<ProductModel> productModelList = productRepository.findAll();
 
-        List<ProductDTO> productDTOList = new ArrayList<ProductDTO>();
+        // MODEL PRODUCT LIST IS NOT EMPTY
+        if (!productModelList.isEmpty()) {
+
+            List<ProductDTO> productDTOList = new ArrayList<ProductDTO>();
 
             // DTO PRODUCT LIST
             for (ProductModel product : productModelList) {
@@ -51,6 +54,11 @@ public class ProductService {
             }
 
             return productDTOList;
+        }
+        // MODEL PRODUCT LIST IS EMPTY
+        else {
+            return null;
+        }
     }
 
     // CREATE NEW PRODUCT INTO REPOSITORY LAYER ✅
@@ -65,9 +73,7 @@ public class ProductService {
     }
 
     // UPDATE PRODUCT BY ID FROM REPOSITORY LAYER ✅
-    public ProductDTO updateProductById(Integer id, ProductDTO productDTO){
-
-        productDTO.setProductId(id);
+    public ProductDTO updateProductById(ProductDTO productDTO){
 
         final ProductModel productModel = productMapper.toModel(productDTO);
 
