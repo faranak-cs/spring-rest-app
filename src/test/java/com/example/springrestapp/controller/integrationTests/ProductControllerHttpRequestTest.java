@@ -11,6 +11,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -32,44 +33,86 @@ public class ProductControllerHttpRequestTest {
 
     @Test
     void createProductShouldReturnStatus200(){
+
+        // GIVEN
         ProductDTO productDTO = new ProductDTO();
         productDTO.setProductName("Table");
 
-        assertEquals(this.restTemplate.postForEntity("http://localhost:" + port + "/createProduct",
-               productDTO, String.class).getStatusCode(), HttpStatus.OK);
+        // WHEN
+        HttpStatusCode expectedStatusCode = restTemplate
+                .postForEntity("http://localhost:" + port + "/createProduct", productDTO, String.class)
+                .getStatusCode();
+
+        // THEN
+        assertEquals(expectedStatusCode, HttpStatus.OK);
     }
 
     @Test
-    void getProductByIdShouldReturnStatus200(){
-        assertEquals(this.restTemplate.getForEntity("http://localhost:" + port + "/getProductById/1",
-                String.class).getStatusCode(), HttpStatus.OK);
+    void getProductByIdShouldReturnStatus404(){
+
+        // GIVEN
+        int id = 1;
+
+        // WHEN
+        HttpStatusCode expectedStatusCode = restTemplate
+                .getForEntity("http://localhost:" + port + "/getProductById/" + id, String.class)
+                .getStatusCode();
+
+        // THEN
+        assertEquals(expectedStatusCode, HttpStatus.NOT_FOUND);
     }
 
     @Test
-    void getAllProductsShouldReturnStatus200(){
-        assertEquals(this.restTemplate.getForEntity("http://localhost:" + port + "/getAllProducts",
-                String.class).getStatusCode(), HttpStatus.NOT_FOUND);
+    void getAllProductsShouldReturnStatus404(){
+
+        // GIVEN
+
+        // no input
+
+        // WHEN
+        HttpStatusCode expectedStatusCode = restTemplate
+                .getForEntity("http://localhost:" + port + "/getAllProducts", String.class)
+                .getStatusCode();
+
+        // THEN
+        assertEquals(expectedStatusCode, HttpStatus.NOT_FOUND);
     }
 
     @Test
     void updateProductByIdShouldReturnStatus200(){
-        ProductDTO productDTO = new ProductDTO();
-        productDTO.setProductName(null);
 
-        assertEquals(this.restTemplate.exchange("http://localhost:" + port + "/updateProductById/1",
-                HttpMethod.PUT,
-                new HttpEntity<>(productDTO),
-                ProductDTO.class).getStatusCode(), HttpStatus.OK);
+        // GIVEN
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setProductName("Table");
+
+        // WHEN
+        HttpStatusCode expectedStatusCode = restTemplate
+                .exchange("http://localhost:" + port + "/updateProductById/1",
+                        HttpMethod.PUT,
+                        new HttpEntity<>(productDTO),
+                        ProductDTO.class)
+                .getStatusCode();
+
+        // THEN
+        assertEquals(expectedStatusCode, HttpStatus.OK);
     }
 
     @Test
-    void deleteProductByIdShouldReturnStatus200(){
+    void deleteProductByIdShouldReturnStatus204(){
+
+        // GIVEN
         ProductDTO productDTO = new ProductDTO();
         productDTO.setProductId(1);
 
-        assertEquals(this.restTemplate.exchange("http://localhost:" + port + "/deleteProductById/1",
-                HttpMethod.DELETE,
-                new HttpEntity<>(productDTO),
-                ProductDTO.class).getStatusCode(), HttpStatus.NO_CONTENT);
+        // WHEN
+        HttpStatusCode expectedStatusCode = restTemplate
+                .exchange("http://localhost:" + port + "/deleteProductById/1",
+                        HttpMethod.DELETE,
+                        new HttpEntity<>(productDTO),
+                        ProductDTO.class)
+                .getStatusCode();
+
+        // THEN
+        assertEquals(expectedStatusCode, HttpStatus.NO_CONTENT);
     }
 }
