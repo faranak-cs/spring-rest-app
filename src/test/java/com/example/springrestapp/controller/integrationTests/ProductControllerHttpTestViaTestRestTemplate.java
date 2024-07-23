@@ -67,8 +67,6 @@ public class ProductControllerHttpRequestTest {
 
         // GIVEN
 
-        // no input
-
         // WHEN
         HttpStatusCode expectedStatusCode = restTemplate
                 .getForEntity("http://localhost:" + port + "/getAllProducts", String.class)
