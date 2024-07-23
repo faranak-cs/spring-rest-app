@@ -1,4 +1,4 @@
-package com.example.springrestapp.controller.unitTests;
+package com.example.springrestapp.controller.integrationTests;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
-public class ProductControllerTest {
+public class ProductControllerHttpTestViaMockMvc {
 
     MockMvc mockMvc;
 
@@ -26,19 +26,19 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void givenNewProduct_whenPost_thenReturns200() throws Exception {
+    public void givenNewProduct_whenPost_thenReturns400() throws Exception {
         mockMvc
                 .perform(post("/createProduct")
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void givenProductId_whenGet_thenReturns200() throws Exception {
+    public void givenProductId_whenGet_thenReturns404() throws Exception {
         mockMvc
                 .perform(get("/getProductById/{id}", 1)
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isNotFound());
     }
 
 

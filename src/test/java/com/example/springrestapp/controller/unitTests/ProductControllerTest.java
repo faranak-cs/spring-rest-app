@@ -1,2 +1,4 @@
-package com.example.springrestapp.controller.unitTests;public class ProductControllerTest {
+package com.example.springrestapp.controller.unitTests;
+
+public class ProductControllerTest {
 }
