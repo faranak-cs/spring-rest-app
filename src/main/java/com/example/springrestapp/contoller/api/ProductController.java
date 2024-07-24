@@ -54,12 +54,7 @@ public class ProductController {
 
         List<ProductDTO> products = productService.getAllProducts();
 
-        if (products == null) {
-            return ResponseEntity
-                    .status(404)
-                    .build();
-        }
-        else if (products.isEmpty()) {
+        if (products.isEmpty()) {
              return ResponseEntity
                      .status(404)
                      .build();
