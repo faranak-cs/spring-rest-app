@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest
-public class SmokeTest {
+public class SmokeIT {
 
     @Autowired
     private ProductController productController;
