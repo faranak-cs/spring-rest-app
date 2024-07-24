@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class ProductControllerHttpTestViaTestRestTemplate {
+public class ProductControllerViaTestRestTemplateTest {
 
     @LocalServerPort
     private int port;

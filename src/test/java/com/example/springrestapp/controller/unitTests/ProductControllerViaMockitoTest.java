@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class ProductControllerTest {
+public class ProductControllerViaMockitoTest {
 
     // CLASS UNDER TEST - cut
     private ProductController cut;
