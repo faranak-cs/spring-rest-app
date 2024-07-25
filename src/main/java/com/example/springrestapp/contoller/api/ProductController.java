@@ -21,6 +21,12 @@ public class ProductController {
     // HEALTH CHECK
     // http://localhost:8080/actuator/health
 
+    // HOME PAGE
+    @GetMapping("/")
+    public String homePage(){
+        return "Home Page";
+    }
+
     // HELLO ✅
     @GetMapping("/hello")
     public String hello(){
