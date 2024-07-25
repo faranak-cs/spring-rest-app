@@ -118,6 +118,8 @@
 			</plugin>
 
 		</plugins>
+
+		<finalName>spring-rest</finalName>
 	</build>
 
 </project>
