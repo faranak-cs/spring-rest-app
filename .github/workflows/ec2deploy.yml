@@ -1,0 +1,21 @@
+name: Build on DockerHub and Deploy to AWS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build on DockerHub
+    runs-on: ubuntu-latest
+
+
+
+
+
+
+    
+  deploy:
+    name: Deploy to AWS
+    runs-on: ubuntu-latest
+
+
