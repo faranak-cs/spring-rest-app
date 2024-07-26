@@ -35,7 +35,6 @@ jobs:
           with:
             context: .
             push: true
-            # dockerfile: ./Dockerfile
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/spring-rest:latest
             
   # deploy:
