@@ -37,8 +37,23 @@ jobs:
             push: true
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/spring-rest:latest
             
-  # deploy:
-  #   name: Deploy to AWS
-  #   runs-on: ubuntu-latest
+  deploy:
+    needs: build
+    name: Deploy to AWS
+    runs-on: ubuntu-latest
+
+    steps:
+     - name: Set permissions for private key
+       run: |
+        echo "${{ secrets.AWS_PRIVATE_KEY }}" > key.pem
+        chmod 600 key.pem
+        
+     - name: Pull Docker image
+       run: |
+        ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@${{secrets.AWS_EC2_INSTANCE}} 'sudo docker pull ${{secrets.DOCKERHUB_USERNAME}}/spring-rest:latest'
+        
+     - name: Run new container
+       run: |
+        ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@${{secrets.AWS_EC2_INSTANCE}} 'sudo docker run -d --name spring-rest -p 8000:8000 ${{secrets.DOCKERHUB_USERNAME}}/spring-rest:latest'
 
 
