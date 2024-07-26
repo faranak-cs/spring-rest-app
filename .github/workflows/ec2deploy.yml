@@ -23,9 +23,9 @@ jobs:
         - name: Build and push
           uses: docker/build-push-action@v6
           with:
-            context: ./src
+            context: .
             push: true
-            dockerfile: ./Dockerfile
+            # dockerfile: ./Dockerfile
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/spring-rest:latest
             
   # deploy:
