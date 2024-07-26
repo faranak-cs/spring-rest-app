@@ -50,11 +50,11 @@ jobs:
         
      - name: Pull Docker image
        run: |
-        ssh -o StrictHostKeyChecking=no -i "ec2deploy.pem" ubuntu@ec2-63-35-187-78.eu-west-1.compute.amazonaws.com 'sudo docker pull ${{secrets.DOCKERHUB_USERNAME}}/spring-rest:latest'
+        ssh -o StrictHostKeyChecking=no -i "ec2deploy.pem" ubuntu@ec2-3-250-143-134.eu-west-1.compute.amazonaws.com 'sudo docker pull ${{secrets.DOCKERHUB_USERNAME}}/spring-rest:latest'
         
         
      - name: Run new container
        run: |
-        ssh -o StrictHostKeyChecking=no -i "ec2deploy.pem" ubuntu@ec2-63-35-187-78.eu-west-1.compute.amazonaws.com 'sudo docker run -d --name spring-rest -p 8000:8000 ${{secrets.DOCKERHUB_USERNAME}}/spring-rest:latest'
+        ssh -o StrictHostKeyChecking=no -i "ec2deploy.pem" ubuntu@ec2-3-250-143-134.eu-west-1.compute.amazonaws.com 'sudo docker run -d --name spring-rest -p 8000:8000 ${{secrets.DOCKERHUB_USERNAME}}/spring-rest:latest'
 
 
