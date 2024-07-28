@@ -3,7 +3,7 @@ name: Build on DockerHub and Deploy to AWS
 on: workflow_dispatch
 
 env:
-  EC2: ec2-user@ec2-54-216-97-38.eu-west-1.compute.amazonaws.com
+  EC2: ec2-54-216-97-38.eu-west-1.compute.amazonaws.com
 
 jobs:
   build:
