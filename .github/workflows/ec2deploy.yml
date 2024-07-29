@@ -3,7 +3,7 @@ name: Build on DockerHub and Deploy to AWS
 on: workflow_dispatch
 
 env:
-  EC2: ec2-user@ec2-54-216-97-38.eu-west-1.compute.amazonaws.com
+  EC2: ec2-user@ec2-34-255-136-201.eu-west-1.compute.amazonaws.com
 
 jobs:
   build:
@@ -62,6 +62,6 @@ jobs:
         
      - name: Run new container
        run: |
-        ssh -o StrictHostKeyChecking=no -i "ec2deploy.pem" ${{ env.EC2 }} 'sudo docker run -d --name spring-rest -p 8000:8000 ${{secrets.DOCKERHUB_USERNAME}}/spring-rest:latest'
+        ssh -o StrictHostKeyChecking=no -i "ec2deploy.pem" ${{ env.EC2 }} 'sudo docker run -d --name spring-rest -p 8080:8080 ${{secrets.DOCKERHUB_USERNAME}}/spring-rest:latest'
 
 
