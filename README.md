@@ -40,15 +40,14 @@ REST API in Spring to perform CRUD operations on a H2 in-memory database of Prod
 ## Deployment
 <img width="1427" alt="Screenshot 2024-07-29 at 12 07 25" src="https://github.com/user-attachments/assets/c7f03f1e-be2a-402f-8059-d4edb0ae19df">
 
-
 ## Demo Video
-
-
 https://github.com/faranak-cs/spring-rest-app/assets/73027299/0f4f37fe-4550-4ec4-a353-a2a28f69d8d9
 
-
 ## Version
-- IntelliJ IDEA CE: 2024.1.4 
-- Java: 17.0.11-tem
-- Maven: 3.9.8
-
+| Library      | Version |
+| -----------      | ----------- |
+| IntelliJ IDEA CE | 2024.1.4    |
+| Java             | 17.0.11-tem |
+| Maven            | 3.9.8  |
+| Spring Boot      | 3.3.1  |
+| Spring Framework | 6.1.10 |
