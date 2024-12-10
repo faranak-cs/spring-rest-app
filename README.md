@@ -1,53 +1,129 @@
-# Spring REST App
-REST API in Spring to perform CRUD operations on a H2 in-memory database of Products.
-## REST Endpoints
-- `/actuator/health`
-- `/createProduct`
-- `/getAllProducts`
-- `/getProductById/{id}`
-- `/updateProductById/{id}`
-- `/deleteProduct/{id}`
-- `/swagger-ui/index.html`
-## Requirements
-### Controller
-- Implement the REST endpoints described in the section below
-- Create a “Product” DTO to be used by the REST API
-- Implement Swagger for the API
-- Implement appropriate validation on the endpoints. e.g. Returning a 400 Bad Request responses fields are missing when creating a product
-### Service Layer
-- Implement a service layer which should act as the intermediary between the Controller and Repository layers of the application
-- Should map “Product” DTO to and from “Product” entity/model (Java object used by the repository layer)
-### Repository Layer
-- Create an in-memory H2 database for the system to store products
-- Create a repository layer using Spring JPA
-- Create a “Product” entity for the repository layer
-- The “Product” entity should have a unique id field that is managed by Spring JPA using sequence generation
-## Useful Links
-- https://spring.io/guides/tutorials/rest
-- https://www.baeldung.com/intro-to-project-lombok
-- https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
-- https://www.baeldung.com/spring-boot-h2-database
-- https://spring.io/projects/spring-data-jpa
-- https://www.baeldung.com/java-entity-vs-dto
-- https://www.baeldung.com/spring-boot-logback-log4j2
-- https://www.baeldung.com/exception-handling-for-rest-with-spring
-- https://spring.io/guides/gs/testing-web
-- https://www.oracle.com/ie/technical-resources/articles/java/javadoc-tool.html
-- https://www.baeldung.com/spring-boot-actuators
-## Architecture Diagram
-![Arch-Diagram](https://github.com/faranak-cs/spring-rest-app/assets/73027299/7c718584-29fb-4908-a924-0f7566a342c4)
+## Description
 
-## Deployment
-<img width="1427" alt="Screenshot 2024-07-29 at 12 07 25" src="https://github.com/user-attachments/assets/c7f03f1e-be2a-402f-8059-d4edb0ae19df">
+### Why Reactive Programming ?
 
-## Demo Video
-https://github.com/faranak-cs/spring-rest-app/assets/73027299/0f4f37fe-4550-4ec4-a353-a2a28f69d8d9
+- This section highlights about the need for reactive programming and explains in detail about the current execution model in spring-mvc.
 
-## Version
-| Library      | Version |
-| -----------      | ----------- |
-| IntelliJ IDEA CE | 2024.1.4    |
-| Java             | 17.0.11-tem |
-| Maven            | 3.9.8  |
-| Spring Boot      | 3.3.1  |
-| Spring Framework | 6.1.10 |
+- This sections explains about the drawbacks in spring-mvc.
+
+- This section explains about the concurrency model in spring-mvc.
+
+### What is Reactive Programming?
+
+- This section talks about "What is Reactive Programming ?"
+
+- How Reactive programming works in a nutshell using a simple example.
+
+- This section will give you all an introduction to Reactive Streams Specification.
+
+- This section will give all an introduction to "Reactive Libraries" that are out there.
+
+### Getting started with Project Reactor
+
+- This section will give you all the fundamentals of Project Reactor and explore the project reactor using some examples.
+
+- This section covers the Reactive Types Flux and Mono in detail.
+
+### Setting up the Project for this course
+
+- In this section we will set up the project for this course using the Spring Intializr website.
+
+### Reactive Programming (Flux and Mono) - Hands on + Junit Testing
+
+- In this section we will explore about how Flux and Mono works via code.
+
+- We will do live coding on how to write Junit test cases using Flux and Mono.
+
+- We will explore lot of different operators in Flux and Mono.
+
+### Build the first Non Blocking RESTFUL API using Annotated Controllers - Hands On
+
+- In this section we will build the first non blocking API using the annotated controllers.
+
+- This section covers the fundamentals of how the reactive API works.
+
+- This sections also covers the coding aspect of how to return a Flux/Mono from an end point.
+
+- This section also covers how to write JUNIT test cases using WebTestClient.
+
+### Build Non Blocking RESTFUL API using Functional Web - Hands On
+
+- In this section we will build the non blocking API using the Functional Web Module.
+
+- This sections explains about the RouterFunction and HandlerFunction which forms the foundation for Function Web Module.
+
+- This section also covers how to write JUNIT test cases using WebTestClient.
+
+### Spring WebFlux & Netty - Execution Model
+
+- This section explains about the different layers behind WebFlux to serve a HTTP Request/Response.
+
+- This sections covers the concepts of NETTY such as Channel, EventLoop and some of the technical aspects of Netty.
+
+### Overview of the Reactive API
+
+- This section will give you an Overview of the Reactive API that we are going to build as part of this course.
+
+### Reactive Programming in Databases - MongoDB - Hands On
+
+- In this section we will learn about how to write the reactive programming code with MongoDB.
+
+- Define the Item Document for the project.
+
+- This section covers about how to configure different profiles in Spring Boot.
+
+- In this section we will set up the ItemReactive Mongo DB adapter.
+
+- This section also covers how to write JUNIT test cases for the reactive repository.
+
+### Build the Item Reactive API Endpoint - Using RestController
+
+- In this section we will learn about how to code the Item CRUD Reactive API using the @RestController approach.
+
+- This section also covers how to write automated tests using JUNIT and the non blocking test client WebTestClient.
+
+### Build the Item Reactive API Endpoint - Using Functional Web
+
+- In this section we will learn about how to code the Item CRUD Reactive API using the Functional Web approach.
+
+- This section also covers how to write automated tests using JUNIT and the non blocking test client WebTestClient.
+
+### Build Non Blocking Client using WebClient
+
+- In this section we will explore the techniques to interact with Reactive API using the WebClient.
+
+- Learn the techniques to Invoke the Reactive API using exchange() and retrieve() methods.
+
+- We will explore the GET, PUT, POST and DELETE operations using the WebClient.
+
+### Handling Exceptions in WebFlux - RestController
+
+- In this section we will code and explore different approaches to handle the exceptions/errors that occurs in the reactive api that’s built using RestController.
+
+- Handle exceptions using @ExceptionHandler and @ControllerAdvice.
+
+- This section also covers how to write JUNIT test cases for the Exception scenarios.
+
+### Handling Exceptions in WebFlux - Functional Web
+
+- In this section we will code and explore different approaches to handle the exceptions/errors that occurs in the reactive api that’s built using Functional Web.
+
+- Handle exceptions using WebExceptionHandler.
+
+- This section also covers how to write JUNIT test cases for the Exception scenarios.
+
+### WebClient - Exception Handling
+
+- In this section we will code and explore how to handle the exceptions using the WebClient.
+
+- Learn the techniques to handle the exceptions using exchange() and retrieve() methods.
+
+### Streaming Real Time Data using WebFlux - Server Side Events (SSE)
+
+- In this section we will code and learn about build an endpoint for Streaming RealTime Data using Mongo DB and Spring WebFlux.
+
+- This section covers about the Tailable Cursors and Capped Collections in Mongo DB.
+
+- Build a Non Blocking Streaming Endpoint and interact with the Mongo DB using the @Tailable annotation.
+
+- Learn to write Automated Tests using JUNIT for the Streaming Endpoints (SSE).  
