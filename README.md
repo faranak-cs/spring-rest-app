@@ -126,4 +126,8 @@
 
 - Build a Non Blocking Streaming Endpoint and interact with the Mongo DB using the @Tailable annotation.
 
-- Learn to write Automated Tests using JUNIT for the Streaming Endpoints (SSE).  
+- Learn to write Automated Tests using JUNIT for the Streaming Endpoints (SSE).
+
+## Useful Links
+- https://projectreactor.io/docs/core/release/reference/reactiveProgramming.html#operators
+- https://youtu.be/wsgJU5S1rRY?si=g94AnpG2e7iFSI2q
