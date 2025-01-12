@@ -2,14 +2,19 @@ package com.example.springrestapp.contoller.api;
 
 import com.example.springrestapp.dto.ProductDTO;
 import com.example.springrestapp.service.ProductService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "Product Controller",
+        description = "perform CRUD operations on products db")
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/v1")
 public class ProductController {
 
     // ONLY SERVICE LAYER TALK TO CONTROLLER LAYER
@@ -18,23 +23,8 @@ public class ProductController {
 
     // REST ENDPOINTS
 
-    // HEALTH CHECK
-    // http://localhost:8080/actuator/health
-
-    // HOME PAGE
-    @GetMapping("/")
-    public String homePage(){
-        return "Home Page";
-    }
-
-    // HELLO ✅
-    @GetMapping("/hello")
-    public String hello(){
-        return "hello, hello";
-    }
-
-    // ADD NEW PRODUCT ✅
-    @PostMapping("/createProduct")
+    @Operation(description = "test api to add a product into db")
+    @PostMapping("/products")
     public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO){
        // return "Product is created!";
        // return productService.createProduct(productName);
@@ -52,8 +42,8 @@ public class ProductController {
         }
     }
 
-    // GET ALL THE PRODUCTS ✅
-    @GetMapping("/getAllProducts")
+    @Operation(description = "test api to get all products from db")
+    @GetMapping("/products")
     public ResponseEntity<List<ProductDTO>> getAllProducts() {
        // return "List of All Products!";
        // return productService.getAllProducts();
@@ -72,8 +62,8 @@ public class ProductController {
         }
     }
 
-    // GET PRODUCT BY ID ✅
-    @GetMapping("/getProductById/{id}")
+    @Operation(description = "test api to get a product by id from db")
+    @GetMapping("/products/{id}")
     public ResponseEntity<ProductDTO> getProductById(@PathVariable Integer id){
 
         ProductDTO product = productService.getProductById(id);
@@ -90,8 +80,8 @@ public class ProductController {
         }
     }
 
-    // UPDATE PRODUCT BY ID ✅
-    @PutMapping("/updateProductById/{id}")
+    @Operation(description = "test api to update a product in db")
+    @PutMapping("/products/{id}")
     public ResponseEntity<ProductDTO> updateProductById(@PathVariable Integer id, @RequestBody ProductDTO productDTO){
        // return "Product is updated!";
        // return productService.updateProductById(id, productName);
@@ -111,8 +101,8 @@ public class ProductController {
         }
     }
 
-    // DELETE PRODUCT BY ID ✅
-    @DeleteMapping("/deleteProductById/{id}")
+    @Operation(description = "test api to delete a product from db")
+    @DeleteMapping("/products/{id}")
     public ResponseEntity<ProductDTO> deleteProductById(@PathVariable Integer id){
        // return "Product is deleted!";
        // return productService.deleteProductById(id);
