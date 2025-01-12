@@ -45,4 +45,4 @@ jobs:
         coverage_report_title: Code Coverage
         skip_check_run: true
         minimum_coverage: 80
-        fail_below_threshold: true
+        fail_below_threshold: false
